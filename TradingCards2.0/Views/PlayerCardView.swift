@@ -7,89 +7,63 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct PlayerCardView: View {
     
-let player: Player
-
-var body: some View {
+    let player: Player
+    
+    var body: some View {
+        
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [player.teamColor, .black]),
+                   startPoint: .top,
+                   endPoint: .bottom
+               )
+               .ignoresSafeArea()
             
-ZStack {
-                
-// Background court design
-                
-LinearGradient(
-    colors: [ .white , .black],
-    startPoint: .topLeading,
-    endPoint: .bottomTrailing
-    )
-
-VStack(spacing: 20) {
-
-// Player's name
-
+            VStack(spacing: 20) {
 Text(player.name)
     .font(.largeTitle)
     .bold()
-    .foregroundColor(.white)
-    .padding(.top, 20)
+    .foregroundColor(.black)
+    .padding()
 
-// Player's image
- 
-    
 Image(player.imageName)
     .resizable()
     .scaledToFit()
-    .frame(width: 180, height: 180)
+    .frame(width: 200, height: 160)
     .clipShape(Circle())
-    .overlay(Circle()
-    .stroke(Color.white, lineWidth: 4))
+    .overlay(Circle().stroke(Color.white, lineWidth: 4))
     .shadow(radius: 8)
 
-// Player's details
- 
-    
-VStack(spacing: 10) {Text("Team: \(player.team)")
+Text("Position: \(player.position)")
     .font(.title2)
-    .bold()
-    .foregroundColor(.white)
+    .foregroundColor(.black)
 
- Text("Position: \(player.position)")
-    .font(.title3)
-    .foregroundColor(.white)
+Text("Team: \(player.team)")
+    .font(.title2)
+    .foregroundColor(.black)
 
 Text("Jersey Number: #\(player.number)")
-    .font(.title3)
-    .foregroundColor(.white)
+    .font(.title2)
+    .foregroundColor(.black)
 
-Text("Shoots: \(player.shoots)")
-    .font(.title3)
-    .foregroundColor(.white)
-   }
-    .padding()
-
-// Basketball hoop or other theme-specific icon
-
-    
-Image(systemName: "basketball.fill")
+Image(player.imageTeam)
     .resizable()
     .scaledToFit()
-    .frame(width: 50, height: 50)
-    .foregroundColor(.white)
-
-                    Spacer()
-                }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill(Color.orange)
-                        .shadow(radius: 10)
-                        .padding(10)
-                )
-            }
-        }
-    }
-
-
+    .frame(width: 80, height: 80)
+    .foregroundColor(.black)
+}
+.padding()
+.background(RoundedRectangle(cornerRadius: 10)
+.fill(Color.white)
+.shadow(radius: 10)
+                          )
+                      }
+                  }
+              }
 #Preview {
-    PlayerCardView(player: player_1)
+    PlayerCardView(player : player_1)
 }
