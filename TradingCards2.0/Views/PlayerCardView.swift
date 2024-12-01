@@ -7,23 +7,22 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct PlayerCardView: View {
     
     let player: Player
     
     var body: some View {
         
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [player.teamColor, .black]),
-                   startPoint: .top,
-                   endPoint: .bottom
-               )
-               .ignoresSafeArea()
+    ZStack {
+LinearGradient(
+  gradient: Gradient(colors: [player.teamColor, .black]),
+    startPoint: .top,
+    endPoint: .bottom
+    )
+   .ignoresSafeArea()
             
-            VStack(spacing: 20) {
+    VStack(spacing: 20) {
+
 Text(player.name)
     .font(.largeTitle)
     .bold()
